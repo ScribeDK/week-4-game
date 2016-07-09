@@ -1,0 +1,138 @@
+body {background-image: url("../images/stone-decorative.jpg");
+	background-repeat: repeat;
+	z-index: -10;}
+
+.mainBox{overflow:auto;
+text-align: center;
+position: static;
+}
+
+.stats{position: absolute;
+z-index: 11;
+background:#FFF;
+opacity:0;}
+
+.darkElf{border:solid #FF2400 3px;
+background-image: url("../images/Blue_sky_south_of_France.jpg");
+position: absolute;
+float: left;
+height: 219px; 
+width:203px;
+top: 75px;
+left: 200px;
+z-index: 10;}
+
+.darkElf:hover .stats{opacity:0.6;
+padding: 2px;
+color:#000000; 
+font-size:20px; 
+font-weight:700;
+text-align:justify;
+z-index: 11;}
+
+.orc{border:solid #FF2400 3px;
+background-image: url("../images/Blue_sky_south_of_France.jpg");
+position: absolute;
+float: left;
+height: 219px; 
+width: 203px;
+top: 75px;
+left: 450px;
+z-index: 10;}
+
+.orc:hover .stats{opacity:0.6;
+padding: 2px;
+color:#000000; 
+font-size:20px; 
+font-weight:700;
+text-align:justify;
+z-index: 11;}
+
+.elf{border:solid #FF2400 3px;
+background-image: url("../images/Blue_sky_south_of_France.jpg");
+position: absolute;
+float: left;
+height: 219px; 
+width: 139px;
+top: 75px;
+left: 700px;
+z-index: 10;}
+
+.elf:hover .stats{opacity:0.6;
+padding: 2px;
+color:#000000; 
+font-size:20px; 
+font-weight:700;
+text-align:justify;
+z-index: 11;}
+
+.human{border:solid #FF2400 3px;
+background-image: url("../images/Blue_sky_south_of_France.jpg");
+position: absolute;
+float: left;
+height: 220px; 
+width: 200px;
+top: 75px;
+left: 900px;
+z-index: 10;}
+
+.human:hover .stats{opacity:0.6;
+padding: 2px;
+color:#000000; 
+font-size:20px; 
+font-weight:700;
+text-align:justify;
+z-index: 11;}
+
+.dwarf{border:solid #FF2400 3px;
+background-image: url("../images/Blue_sky_south_of_France.jpg");
+position: absolute;
+float: left;
+height: 220px; 
+width: 200px;
+top: 300px;
+left: 450px;
+z-index: 10;}
+
+.dwarf:hover .stats{opacity:0.6;
+padding: 2px;
+color:#000000; 
+font-size:20px; 
+font-weight:700;
+text-align:justify;
+z-index: 11;}
+
+.skeleton{border:solid #FF2400 3px;
+background-image: url("../images/Blue_sky_south_of_France.jpg");
+position: absolute;
+float: left;
+height: 220px; 
+width: 152px;
+top: 300px;
+left: 700px;
+z-index: 10;}
+
+.skeleton:hover .stats{opacity:0.6;
+padding: 2px;
+color:#000000; 
+font-size:20px; 
+font-weight:700;
+text-align:justify;
+z-index: 11;}
+
+#title{color: gold;
+background: black;}
+
+#torchBox-R{z-index: -1;
+overflow: auto;
+position: absolute;
+top: 75px;
+right: 75px;
+float: right;}
+
+#torchBox-L{z-index: -1;
+overflow: auto;
+position: absolute;
+top: 75px;
+left: 75px;
+float: left;}
