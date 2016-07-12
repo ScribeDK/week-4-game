@@ -129,29 +129,43 @@
 				playerBox.html(playerStats);
 				opponentBox.html(opponentStats);
 				
-								// check for win or loss
+				// check for loss
 				if (playerHP <= 0){
 					
 					$("#attackButton").remove();
 
-					alert("You have lost")
-					var again = confirm("would you like to play again?");
+					alert("You have lost.")
+					var again = confirm("Would you like to play again?");
 					if (again == true){location.reload(true);}
 				}
+				// check for win
 				else if (opponentHP <= 0){
+					
 					winCount = winCount + 1;
+					
+					// check if final win
 					if (winCount == 5){
-						alert("You have won the Melee Arena! All hail the great champion!")
-						var again = confirm("would you like to play again?");
+						alert("You have won the Melee Arena! All hail the Grand Champion!")
+						var again = confirm("Would you like to play again?");
 						if (again == true){location.reload(true);}
+						$("#attackButton").remove();
 					}
-					else{alert("You won this round chose another opponent.")}
+					
+					else{alert("You won this round chose another opponent.")
+					
+					// clear elements grenerated for new opponent
 					$("#attackButton").remove();
 					$("#playerBox").remove();
 					$("#opponentBox").remove();
+					
+					
+					// remove dead opponents body
 					$("." + opponentFighter).remove();
+					
+					// reset player to max health
 					playerHP = eval(playerFighter + "[2]");
 					opponent = false;
+					}
 				}
 			
 			});

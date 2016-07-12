@@ -171,7 +171,7 @@ left: 575px;
 
 #torchBox-R{z-index: -1;
 overflow: auto;
-position: absolute;
+position: fixed;
 top: 75px;
 right: 75px;
 float: right;
@@ -179,7 +179,7 @@ float: right;
 
 #torchBox-L{z-index: -1;
 overflow: auto;
-position: absolute;
+position: fixed;
 top: 75px;
 left: 75px;
 float: left;
