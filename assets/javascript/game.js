@@ -84,11 +84,11 @@
 				while(roundNull == true){
 			
 				// player roles attack and defence
-				var attP = Math.ceil(Math.random() * playerAtt);
-				var defP = Math.ceil(Math.random() * playerDef);
+				var attP = Math.floor(Math.random() * (playerAtt + 1));
+				var defP = Math.floor(Math.random() * (playerDef + 1));
 				// opponent roles attack and defence
-				var attO = Math.ceil(Math.random() * opponentAtt);
-				var defO = Math.ceil(Math.random() * opponentDef);
+				var attO = Math.floor(Math.random() * (opponentAtt + 1));
+				var defO = Math.floor(Math.random() * (opponentDef + 1));
 			
 				//player attack outcome
 				var roundP = attP - defO;
