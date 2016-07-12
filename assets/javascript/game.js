@@ -22,7 +22,11 @@
 	var opponentAtt = ("");
 	var opponentDef = ("");
 	var opponentHP = ("");
-	
+	// check if game is won
+	var winCount = 0;
+	// set location to add new elements
+	var mainBox = $(".mainBox");
+
 	//Click section to select fighter
 	$('.fighter').on('click', function() {
 		
@@ -63,7 +67,6 @@
 				opponentStats = ("<section id='opponentBox'><h1>Opponent</h1><h1>Attack: " + opponentAtt + "</h1><h1>Defence: " + opponentDef + "</h1><h1>Health: " + opponentHP + "</h1></section>");
 				
 				// append attackButton & stat boxes to page
-				var mainBox = $(".mainBox");
 				mainBox.append(attackButton);
 				mainBox.append(playerStats);
 				mainBox.append(opponentStats);
@@ -75,6 +78,10 @@
 		
 		
 			$('.attack').on('click', function() {
+				
+				//set loop for no damage rounds
+				var roundNull = true;
+				while(roundNull == true){
 			
 				// player roles attack and defence
 				var attP = Math.ceil(Math.random() * playerAtt);
@@ -84,37 +91,68 @@
 				var defO = Math.ceil(Math.random() * opponentDef);
 			
 				//player attack outcome
-				var battleP = attP - defO;
+				var roundP = attP - defO;
 
 				//check if defence overcomes attack
-				if (battleP < 0){
-					battleP = 0;
-				}
-			
-				//update opponent health
-				opponentHP = opponentHP - battleP;
+				if (roundP < 0){
+					roundP = 0;
+				}			
 
 				//opponent attack outcome
-				var battleO = attO - defP;
+				var roundO = attO - defP;
 
 				//check if defence overcomes attack
-				if (battleO < 0){
-					battleO = 0;
+				if (roundO < 0){
+					roundO = 0;
 				}
+				
+				//clear loop is damage is done
+				if (roundP != 0 || roundO != 0)
+				{roundNull = false;}
+				}
+				
+				//update opponent health
+				opponentHP = opponentHP - roundP;
 			
 				//update player health
-				playerHP = playerHP - battleO;
+				playerHP = playerHP - roundO;
+				
+
 
 				//update stat boxes
-				playerStats = ("<h1>Player</h1><h1>Attacked for: " + attP + "</h1><h1>Defended for: " + defP + "</h1><h3>lost " + battleO+ "</h3><h1>Health: " + playerHP + "</h1></section>");
-				opponentStats = ("<h1>Opponent</h1></h1><h1>Defended for: " + defO + "<h1>Attacked for: " + attO + "</h1><h3>lost " + battleP+ "</h3><h1>Health: " + opponentHP + "</h1></section>");
-			
+				playerStats = ("<h1>Player</h1><h1>Attacked for: " + attP + "</h1><h1>Defended for: " + defP + "</h1><h3>lost " + roundO+ "</h3><h1>Health: " + playerHP + "</h1></section>");
+				opponentStats = ("<h1>Opponent</h1></h1><h1>Defended for: " + defO + "<h1>Attacked for: " + attO + "</h1><h3>lost " + roundP+ "</h3><h1>Health: " + opponentHP + "</h1></section>");
 			
 				// update health and show roles
 				var playerBox = $("#playerBox");
 				var opponentBox =  $("#opponentBox");
 				playerBox.html(playerStats);
 				opponentBox.html(opponentStats);
+				
+								// check for win or loss
+				if (playerHP <= 0){
+					
+					$("#attackButton").remove();
+
+					alert("You have lost")
+					var again = confirm("would you like to play again?");
+					if (again == true){location.reload(true);}
+				}
+				else if (opponentHP <= 0){
+					winCount = winCount + 1;
+					if (winCount == 5){
+						alert("You have won the Melee Arena! All hail the great champion!")
+						var again = confirm("would you like to play again?");
+						if (again == true){location.reload(true);}
+					}
+					else{alert("You won this round chose another opponent.")}
+					$("#attackButton").remove();
+					$("#playerBox").remove();
+					$("#opponentBox").remove();
+					$("." + opponentFighter).remove();
+					playerHP = eval(playerFighter + "[2]");
+					opponent = false;
+				}
 			
 			});
 		});
