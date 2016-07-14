@@ -24,8 +24,11 @@
 	var opponentHP = ("");
 	// check if game is won
 	var winCount = 0;
-	// set location to add new elements
+	// set locations to add new elements
 	var mainBox = $(".mainBox");
+	var musicBox =  $("#musicBox");
+	//list of all music 
+	var audio = ["<audio autoplay loop><source src='assets/audio/black-soup.mp3' type='audio/mpeg'></audio>","<audio autoplay loop><source src='assets/audio/fighting-of-the-spirit.mp3' type='audio/mpeg'></audio>","<audio autoplay loop><source src='assets/audio/high-tension-wire.mp3' type='audio/mpeg'></audio>","<audio autoplay loop><source src='assets/audio/sacrifice-part-2.mp3' type='audio/mpeg'></audio>","<audio autoplay loop><source src='assets/audio/sacrifice-part-3.mp3' type='audio/mpeg'></audio>","<audio autoplay><source src='assets/audio/positive.mp3' type='audio/mpeg'></audio>","<audio autoplay><source src='assets/audio/Celestial Aeon Project Hymn of the Sky.mp3' type='audio/mpeg'></audio>","<audio autoplay><source src='assets/audio/long-goodbye.mp3' type='audio/mpeg'></audio>"]
 
 	//Click section to select fighter
 	$('.fighter').on('click', function() {
@@ -65,6 +68,10 @@
 				opponentDef = eval(opponentFighter + "[1]");
 				opponentHP = eval(opponentFighter + "[2]");
 				opponentStats = ("<section id='opponentBox'><h1>Opponent</h1><h1>Attack: " + opponentAtt + "</h1><h1>Defence: " + opponentDef + "</h1><h1>Health: " + opponentHP + "</h1></section>");
+				
+				//select random battle music
+				var Music = Math.floor(Math.random() * (5));
+				musicBox.html(audio[Music]);
 				
 				// append attackButton & stat boxes to page
 				mainBox.append(attackButton);
@@ -132,6 +139,9 @@
 				// check for loss
 				if (playerHP <= 0){
 					
+					// play loss music
+					musicBox.html(audio[7]);
+					
 					$("#attackButton").remove();
 
 					alert("You have lost.")
@@ -145,6 +155,10 @@
 					
 					// check if final win
 					if (winCount == 5){
+						
+						//play final win music
+						musicBox.html(audio[6]);
+						
 						alert("You have won the Melee Arena! All hail the Grand Champion!")
 						var again = confirm("Would you like to play again?");
 						if (again == true){location.reload(true);}
@@ -152,6 +166,9 @@
 					}
 					
 					else{alert("You won this round chose another opponent.")
+					
+					//play win music
+					musicBox.html(audio[5]);
 					
 					// clear elements grenerated for new opponent
 					$("#attackButton").remove();
